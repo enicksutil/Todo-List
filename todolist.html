@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" , initial-scale="1.0" />
+    <meta http-equiv="X-UA Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input id="input" placeholder="Digite uma tarefa" />
+    <ul id="list"></ul>
+    <script>
+      function newitem() {
+        var item = document.getElementById("input").value;
+        var ul = document.getElementById("list");
+        var li = document.createElement("li");
+
+        li.appendChild(document.createTextNode(item));
+        ul.appendChild(li);
+
+        document.getElementById("input").value = "";
+        li.onclick = removeItem;
+      }
+
+      document.body.onkeyup = function (event) {
+        if (event.keyCode === 13) {
+          newitem();
+        }
+      };
+
+      function removeItem(event) {
+        event.target.parentElement.removeChild(event.target);
+      }
+    </script>
+  </body>
+</html>
